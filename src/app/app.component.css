@@ -1,0 +1,17 @@
+
+mat-sidenav-container{
+    height: calc(205vh - 115vh);
+
+}
+
+mat-sidenav {
+    width: 200px;
+    background-color: #eee;
+}
+h1 {
+    margin-left: 200px;
+}
+
+h4 {
+position: static;
+}

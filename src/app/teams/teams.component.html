@@ -1,0 +1,44 @@
+<mat-form-field>
+    <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Filtru">
+</mat-form-field>
+<br>
+
+<button mat-button color="primary" class="addButton">
+    Adauga
+<mat-icon>add</mat-icon>
+</button>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort
+    (matSortChange)="announceSortChange($event)">
+
+    <ng-container matColumnDef="DENUMIRE">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nume echipa
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.DENUMIRE}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="STATUS">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.STATUS}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="DATA_CREARE">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Data Creare </th>
+        <td mat-cell *matCellDef="let element"> {{element.DATA_CREARE}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Actions">
+        <th mat-header-cell *matHeaderCellDef> Actiuni </th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-button color="accent" (click)="OpenDialog('1000ms','500ms')"><mat-icon>edit</mat-icon></button>
+            <button mat-button color="warn" (click)="OpenDialog('1000ms','500ms')"><mat-icon>delete</mat-icon></button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+</mat-paginator>
